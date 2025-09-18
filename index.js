@@ -16,9 +16,12 @@ const db=require('./config/database')
 dotenv.config();
 
 const app = express();
-app.use(cors());
+app.use(cors({origin:[process.env.FRONTEND_URL,"http://localhost:4200"],
+  methods:"GET,POST,PUT,DELETE",
+  credentials:true
+}));
 app.use(express.json())
-app.use(bodyParser.json());
+// app.use(bodyParser.json());
 
 app.use('/departments',departmentRoutes)
 app.use('/courses',courseRoutes)
@@ -125,5 +128,5 @@ const PORT = process.env.PORT || 4000
 // })
 
 app.listen(PORT, () => {
-  console.log("server started at port no 3000");
+  console.log(`server started at port no ${PORT}`);
 });
