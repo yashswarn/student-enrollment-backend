@@ -16,10 +16,37 @@ const db=require('./config/database')
 dotenv.config();
 
 const app = express();
-app.use(cors({origin:[process.env.FRONTEND_URL,"http://localhost:4200"],
-  methods:"GET,POST,PUT,DELETE",
-  credentials:true
+// app.use(cors({
+//   origin:['https://verdant-kataifi-997843.netlify.app',"http://localhost:4200"],
+//   methods:"GET,POST,PUT,DELETE",
+//   credentials:true
+// }));
+
+// app.use(cors({
+//   origin: function(origin, callback){
+//     const allowedOrigins = ['https://verdant-kataifi-997843.netlify.app', 'http://localhost:4200'];
+//     if(!origin) return callback(null, true); // Postman ya curl ke liye
+//     if(allowedOrigins.indexOf(origin) === -1){
+//       const msg = 'CORS policy: This origin is not allowed';
+//       return callback(new Error(msg), false);
+//     }
+//     return callback(null, true);
+//   },
+//   methods: "GET,POST,PUT,DELETE,OPTIONS",
+//   credentials: true
+// }));
+
+app.use(cors({
+  origin: ['https://verdant-kataifi-997843.netlify.app', "http://localhost:4200"],
+  methods: ['GET','POST','PUT','DELETE','OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true
 }));
+
+
+// Optional: preflight support
+app.options('*', cors());
+
 app.use(express.json())
 // app.use(bodyParser.json());
 
