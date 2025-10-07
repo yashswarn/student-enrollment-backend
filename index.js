@@ -32,7 +32,7 @@ app.use(cors({
 
 
 // Optional: preflight support
-app.options('*', cors());
+// app.options('*', cors());
 
 app.use(express.json())
 // app.use(bodyParser.json());
