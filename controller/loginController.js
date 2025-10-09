@@ -27,7 +27,7 @@ exports.formSubmit = async (req, res) => {
     else {
       // now get roles for the user
       const [roleRows] = await db.execute(
-        "select r.role_name from roles r inner join user_role ur on r.id=ur.role_id where ur.user_id =?",
+        "select r.role_name from roles r inner join user_role ur on r.id=ur.role_id where ur.id =?",
         [user.id]
       );
 
