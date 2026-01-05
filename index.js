@@ -16,23 +16,14 @@ const db=require('./config/database')
 dotenv.config();
 
 const app = express();
-// app.use(cors({
-//   origin:['https://verdant-kataifi-997843.netlify.app',"http://localhost:4200"],
-//   methods:"GET,POST,PUT,DELETE",
-//   credentials:true
-// }));
 
 app.use(cors({
-  origin: 'https://verdant-kataifi-997843.netlify.app',
+  origin: 'http://localhost:4200',
   methods: ['GET','POST','PUT','DELETE','OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true
 }));
 
-
-
-// Optional: preflight support
-// app.options('*', cors());
 
 app.use(express.json())
 // app.use(bodyParser.json());

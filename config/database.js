@@ -18,8 +18,6 @@ const db=mysql.createPool({
     }
 }).promise();
 
-// test connection once at startup
-
 (async()=>{
     try{
         const connection=await db.getConnection();
@@ -30,15 +28,5 @@ const db=mysql.createPool({
         console.error("mysql connection failed",err.message)
     }
 })();
-
-// db.getConnection((err)=>{
-//     if(err){
-//         console.error("mysql connection failed",err)
-//         return ;
-//     }
-//     else{
-//         console.log("mysql connect ho gya h backend se");
-//     }
-// })
 
 module.exports=db;
